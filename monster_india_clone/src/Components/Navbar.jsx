@@ -1,8 +1,8 @@
-import { Grid, Box,Img, Button, Menu, MenuButton, MenuList, MenuItem, border, useDisclosure} from '@chakra-ui/react' 
+import { Grid, Box,Img, Button, Menu, MenuButton, MenuList, MenuItem} from '@chakra-ui/react' 
 import { NavLink } from 'react-router-dom'
 export default function Navbar() {
     return (
-        <Grid templateColumns="10% 60% 25%" gap={20} alignItems="center" padding="5" px="10%" boxShadow="rgba(149, 157, 165, 0.2) 0px 8px 24px;" pos="sticky" top={0}>
+        <Grid templateColumns="10% 60% 25%" gap={20} alignItems="center" padding="5" px="10%" boxShadow="rgba(149, 157, 165, 0.2) 0px 8px 24px;" pos="sticky" bg="white" top={0} zIndex={10}>
             <Box columns={1} spacing={10}>
             <NavLink to="/">
                 <Img src="https://media.monsterindia.com/trex/public/default/images/monster-logo.svg" />
