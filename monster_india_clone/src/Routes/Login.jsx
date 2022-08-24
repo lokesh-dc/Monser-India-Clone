@@ -44,28 +44,21 @@ export default function Login () {
     if(state.isAuth){
         return <Navigate to="/" />
     }
-    
+    if(state.isError){
+        return <Navigate to="*" />
+    }
     return (   
             <Grid templateRows="100px 2fr 1fr" gap={5} px="20%" py={10}>
                 <Box>
                     <Text fontSize="4xl" fontWeight="bold">WELCOME BACK !</Text>
                     <Text>You are just a step away from your dream job.</Text>
                 </Box>
-                <Grid templateColumns="repeat(2,1fr)" justifyContent="center"  alignItems="center" border="1px solid grey" >
+                <Grid templateColumns="repeat(2,1fr)" alignItems="center" justifyContent="center" border="1px solid grey" >
                     <GridItem px="5%" paddingRight="50px"  display="grid" gap="3" borderRight="1px solid">
                             <Input type="text" placeholder="Email/Mobile" name="email" onChange={handleInput}/>
                             <Input type="password" placeholder="Password" name="password" onChange={handleInput}/>
                             <Text textAlign="right" color="primary">Forgot Passrord ? </Text>
-                            <Button 
-                            size="lg" 
-                            w="100%" 
-                            bg="primary" 
-                            color="white" 
-                            _hover={{bg:"dark_primary"}} 
-                            onClick={handleSubmit}
-                            isLoading={state.isLoading}
-                            loadingText="Logging In"
-                            >Login</Button>
+                            <Button size="lg" w="100%" bg="primary" color="white" _hover={{bg:"dark_primary"}} onClick={handleSubmit}isLoading={state.isLoading} loadingText="Logging In" >Login</Button>
                             <Button variant='link' size="lg" color="primary" fontWeight="bold" >or, Login via OTP</Button>
                     </GridItem>
                     <GridItem textAlign="center">
@@ -82,9 +75,9 @@ export default function Login () {
                             <Text fontSize="2xl" fontWeight="bold">New To Monster ?</Text>
                             <Text w="75%" color="grey" >Create your profile now and be visible to the top recruiters in the world</Text>
                             <Flex gap={5} alignItems="center">
-                                <Button variant="outline" colorScheme="primary">Register with us</Button>
+                                <Button variant="outline" colorScheme="purple" _hover={{bg:"primary",color:"white" }}>Register with us</Button>
                                 <Text>OR</Text>
-                                <Button variant="outline" colorScheme="primary">Upload Resume</Button>
+                                <Button variant="outline" colorScheme="purple" _hover={{bg:"primary",color:"white" }}>Upload Resume</Button>
                             </Flex>
                     </GridItem>
                     <GridItem border="1px solid" p={5} height="100%">

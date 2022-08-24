@@ -12,7 +12,8 @@ const theme = extendTheme(
     {
         colors:{
             primary : "#6c54da",
-            dark_primary  : "#463592"
+            dark_primary  : "#463592",
+            orange : "#f78520"
         }
     }
 )

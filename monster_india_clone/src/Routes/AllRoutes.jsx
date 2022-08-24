@@ -5,6 +5,7 @@ import Home from "./Home"
 import JobSearch from "./JobSearch"
 import Login from "./Login"
 import WorkFromHome from "./WFH"
+import ArticleRead from "./ArticleRead"
 export default function AllRoutes () {
 
     return (
@@ -15,7 +16,8 @@ export default function AllRoutes () {
             <Route path="/search" element={<JobSearch/>}/>
             <Route path="/career-tips" element={<CareerTips/>}/>
             <Route path="*" element={<ErrorPage/>}/>
-        </Routes>
+            <Route path="/article-read" element={<ArticleRead />} />
+         </Routes>
     )
 
 }

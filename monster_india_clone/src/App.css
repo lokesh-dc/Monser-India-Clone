@@ -2,14 +2,21 @@
   --primary : #6c54da
 }
 
+
+
+.app_download_logos>img{
+  width: 126px;
+  height: 42px;
+}
+
+.App button , 
+.App input{
+  border-radius: 0;
+}
+
 .Login_Social_Buttons > button{
   border: 1px solid rgba(0, 0, 0, 0.185);
   border-radius: 20px;
   background: transparent;
   color: rgba(0, 0, 0, 2.185);
-}
-
-.app_download_logos>img{
-  width: 126px;
-  height: 42px;
 }

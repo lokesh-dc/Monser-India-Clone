@@ -12,7 +12,7 @@ export default function Navbar() {
             <Grid templateColumns="repeat(5,1fr)" justifyContent="space-evenly" alignItems="center">
             <Menu >
                 <MenuButton>JOB SEARCH </MenuButton>
-                    <MenuList>
+                    <MenuList fontSize="sm">
                         <NavLink to="/search" >
                             <MenuItem >JOB BY LOCATION</MenuItem>
                             <MenuItem >JOB BY SKILL </MenuItem>
@@ -24,17 +24,28 @@ export default function Navbar() {
                 </Menu>
                 <Menu>
                 <MenuButton>WORK FROM HOME</MenuButton>
-                    <MenuList>
+                    <MenuList fontSize="sm">
                     <NavLink to="/work-from-home-jobs" >
-                            <MenuItem >WORK FROM HOME IN BANGALORE</MenuItem>
+                            <MenuItem >WORK FROM HOME IN BANGALORE </MenuItem>
                             <MenuItem > WORK FROM HOME IN PUNE </MenuItem>
-                            <MenuItem > WORK FROM HOME IN DELHI</MenuItem>
-                            <MenuItem > WORK FROM HOME IN MUMBAI</MenuItem>
+                            <MenuItem > WORK FROM HOME IN DELHI </MenuItem>
+                            <MenuItem > WORK FROM HOME IN MUMBAI </MenuItem>
                             <MenuItem > WORK FROM HOME IN HYDERABAD </MenuItem>
                         </ NavLink>
                     </MenuList>
                 </Menu>
-                <Box>CARRIER TIPS</Box>
+                <Menu>
+                <MenuButton>CAREER TIPS</MenuButton>
+                    <MenuList fontSize="sm">
+                    <NavLink to="/career-tips">
+                            <MenuItem > COVID-19 CAREER ADVICE</MenuItem>
+                            <MenuItem > JOB SEARCH STRATERGY </MenuItem>
+                            <MenuItem > RESUME & COVER LETTER </MenuItem>
+                            <MenuItem > INTERVIEW TIPS </MenuItem>
+                            <MenuItem > CAREER MANAGEMENT </MenuItem>
+                        </ NavLink>
+                    </MenuList>
+                </Menu>
                 <Box>
                     <Button  bg="#feeabe" color="#f78520">PREMIUM SERVICES</Button>
                 </Box>
@@ -42,8 +53,10 @@ export default function Navbar() {
             </Grid>
 
             <Grid templateColumns="repeat(2,1fr)" gap={3}>
-                <Button size='md' variant='outline'>JOBSEEKER LOGIN</Button>
-                <Button size='md' variant='outline'>FOR EMPLOYERS</Button>
+                <NavLink to="/login">
+                    <Button size='md' variant='outline' _hover={{bg:"orange", color:"white"}}>JOBSEEKER LOGIN</Button>
+                </NavLink>
+                <Button size='md' variant='outline' _hover={{bg:"orange", color:"white"}}>FOR EMPLOYERS</Button>
             </Grid>
         </Grid>
     )
