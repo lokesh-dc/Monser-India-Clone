@@ -1,0 +1,13 @@
+export default function reducer (state, action) {
+    switch(action.type){
+        case 'LOGIN_REQUEST' : 
+            return {...state, isLoading : true}
+        case 'LOGIN_FAILURE' : 
+            return {...state,isLoading:false, isError : true}
+        case 'LOGIN_SUCCESS' :
+            return {...state, isLoading:false, isError: false, user: action.payload, isAuth:true}
+        default : 
+            return state
+
+    }
+} 
