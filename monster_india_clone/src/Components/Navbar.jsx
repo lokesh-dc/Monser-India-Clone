@@ -8,21 +8,24 @@ export default function Navbar() {
             textAlign="center" 
             justifyContent="center" 
             alignItems="center" 
+            w="100%"
+            border="1px solid"
             px={20} 
             py={5}
             boxShadow="rgba(149, 157, 165, 0.2) 0px 8px 24px;" 
             pos="sticky" 
             bg="white" 
             top={0} 
-            zIndex={10}>
-
-            <Box columns={1} spacing={10} width="fit-content" m="auto">
+            zIndex={10}
+        >
+        
+            <Box columns={1} spacing={10} m="auto">
             <NavLink to="/">
                 <Img src="https://media.monsterindia.com/trex/public/default/images/monster-logo.svg"  />
             </NavLink>
             </Box>
             
-            <Grid templateColumns="repeat(5,1fr)" justifyContent="space-evenly" alignItems="center">
+            <Grid templateColumns="repeat(5,1fr)" justifyContent="space-evenly" alignItems="center" display={{base:"none" ,sm:"none", md:"grid"}}>
             <Menu >
                 <MenuButton>JOB SEARCH </MenuButton>
                     <MenuList fontSize="sm">

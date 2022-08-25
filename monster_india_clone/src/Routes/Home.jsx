@@ -69,6 +69,7 @@ export default function Home () {
                     </GridItem>
                 </Grid>
             </Box>
+            
             <EmployersDiv />
             <PremiumBanner />
             <JobsGrid type="Work From Home Jobs"/>
