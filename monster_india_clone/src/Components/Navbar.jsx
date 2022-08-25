@@ -2,7 +2,20 @@ import { Grid, Box,Img, Button, Menu, MenuButton, MenuList, MenuItem} from '@cha
 import { NavLink } from 'react-router-dom'
 export default function Navbar() {
     return (
-        <Grid templateColumns={{base:"1fr", sm:"1fr", md:"1fr", lg:"10% 60% 25%"}} gap={{base:"5", lg:"20"}} textAlign="center" justifyContent="center" alignItems="center" padding="5" px={{base:"2.5%",sm:"2.5", md:"2.5", lg:"10%"}} boxShadow="rgba(149, 157, 165, 0.2) 0px 8px 24px;" pos="sticky" bg="white" top={0} zIndex={10}>
+        <Grid  
+            templateColumns={{base:"1fr", sm:"1fr", md:"1fr", lg:"10% 60% 25%"}} 
+            gap={{base:"5", lg:"20"}} 
+            textAlign="center" 
+            justifyContent="center" 
+            alignItems="center" 
+            px={20} 
+            py={5}
+            boxShadow="rgba(149, 157, 165, 0.2) 0px 8px 24px;" 
+            pos="sticky" 
+            bg="white" 
+            top={0} 
+            zIndex={10}>
+
             <Box columns={1} spacing={10} width="fit-content" m="auto">
             <NavLink to="/">
                 <Img src="https://media.monsterindia.com/trex/public/default/images/monster-logo.svg"  />

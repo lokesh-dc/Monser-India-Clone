@@ -1,8 +1,8 @@
 :root{
   --primary : #6c54da
 }
-body>div:first-of-type{
-  background-color: rgba(80, 80, 80, 0.144);
+.App .landing-div{
+    background-color: rgba(80, 80, 80, 0.144);
 }
 .tabs >button {
   font-size: 1rem;
@@ -13,9 +13,7 @@ body>div:first-of-type{
   height: 42px;
 }
 
-.App .ask-here img{
-  width: 300px;
-}
+
 .App button , 
 .App input{
   border-radius: 0;
@@ -28,8 +26,7 @@ body>div:first-of-type{
   color: rgba(0, 0, 0, 2.185);
 }
 
-.App .landing > div{
-
+.App .landing-div > div{
   background-color: white;
   margin: auto;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px
