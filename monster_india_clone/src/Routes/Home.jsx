@@ -1,31 +1,36 @@
-import { Box, Button, Grid, GridItem, Input, Tab, TabList, Tabs, Text } from "@chakra-ui/react";
+import { Box, Button, Grid, GridItem, Input, Tab, TabList, Tabs, Text} from "@chakra-ui/react";
 import {NavLink} from "react-router-dom"
-import { useContext } from "react"
-import { AppContext } from "../Context/AppContext"
+import EmployersDiv from "../Components/LP_EmployersDiv";
+import PremiumBanner from "../Components/Lp_PremiumBanner";
+import WFHJobs from "../Components/LP_WFH_Jobs";
 
 export default function Home () {
     return (
-        <div>
+        <Grid gap="20px" className="landing">  
             <Box h="fit-content"
                 backgroundImage="url('https://images.unsplash.com/photo-1520531158340-44015069e78e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1272&q=80')"
-                px="10%"
+                backgroundSize="cover"
+                px = {{base:"2.5%",sm:"2.5", md:"2.5", lg:"10%"}}
                 py="50px"
                 textAlign="left"
                 backgroundRepeat="none"
                 backgroundPosition="center"
             >
-                <Text fontSize="4xl" fontWeight="bold" color="black" mb={5}>
+                <Text fontSize={{base:"2xl", lg:"4xl"}} fontWeight="bold" color="black" mb={5}>
                     500,000+ Jobs. Find Better. Faster
                 </Text>
 
-                <Grid templateColumns="3fr 1fr" color="white" gap="5"> 
+                <Grid templateColumns= {{ base: "1fr",sm:"1fr", md:"1fr", lg: "3fr 1fr" }} color="white" gap="5"> 
                     <GridItem bg="rgba(0, 0, 0, 0.522);" p={10}>
-
                         <Tabs variant="unstyled" >
-                            <TabList  >
+                            <TabList className="tabs"  >
                                 <Tab _selected={{ color: 'white', bg: 'black' }}>All Jobs</Tab>
-                                <Tab _selected={{ color: 'white', bg: 'black' }}>Work From Home</Tab>
-                                <Tab _selected={{ color: 'white', bg: 'black' }}>TRIUMPH Jobs</Tab>
+                                <NavLink to="/work-from-home-jobs">
+                                    <Tab _selected={{ color: 'white', bg: 'black' }}>Work From Home</Tab>
+                                </NavLink>
+                                <NavLink to="/search">
+                                    <Tab _selected={{ color: 'white', bg: 'black' }}>TRIUMPH Jobs</Tab>
+                                </NavLink>
                                 <Tab _selected={{ color: 'white', bg: 'black' }}>Contract Jobs</Tab>
                                 <Tab _selected={{ color: 'white', bg: 'black' }}>Fresher Jobs</Tab>
                             </TabList>
@@ -41,7 +46,7 @@ export default function Home () {
                         </Tabs>
                         </GridItem>
                     <GridItem bg="rgba(0, 0, 0, 0.522);" p={4}>
-                        <Grid templateColumns="repeat(2,265px)" gap={4} h="100%" color="black" textAlign="center">
+                        <Grid templateColumns={{ base: "1fr 1fr", lg: "260px 260px" }} gap={4} h="100%" color="black" textAlign="center">
                             <GridItem bg="white;" p={5} lineHeight="2.8rem">
                                 <Box>
                                     <Text fontSize="md" fontWeight="bold">NEW TO MONSTER ?</Text>
@@ -64,6 +69,11 @@ export default function Home () {
                     </GridItem>
                 </Grid>
             </Box>
-        </div>
+            <EmployersDiv />
+            <PremiumBanner />
+            <WFHJobs type="Work From Home Jobs"/>
+            <WFHJobs type="Recent Jobs" />
+
+        </Grid>
     )
 }

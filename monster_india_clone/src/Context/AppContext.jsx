@@ -8,11 +8,11 @@ const initState = {
     isLoading:false,
     isError:false,
     isAuth:false,
+    query : "" ,
     user :{
         Email : "",
         Token : ""
     }
-    
 }
 export default function AppContextProvider (props) {
 
