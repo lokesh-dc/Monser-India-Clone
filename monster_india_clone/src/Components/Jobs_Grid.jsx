@@ -3,20 +3,23 @@ import {ArrowRightIcon} from "@chakra-ui/icons"
 import { useEffect } from "react";
 import { useState } from "react";
 import { fetchData } from "./API/fetchApi";
-export default function WFHJobs () {
+export default function Jobs_Grid ({ type }) {
 
     const [jobs, setJobs] = useState([]);
-
+    const page = type === "Recent Jobs" ? 1 : 2 ;
+    const limit = 4;
     useEffect(()=>{
-        fetchData()
+        fetchData({page,limit})
         .then((res)=>{
             setJobs(res);
         })
         .catch((err)=>{
             console.log(err);
         })
-    },[])
+    },[page])
     function ratingStars(n) {
+        if(n==="")
+            n = 3;
         let stars = ""
         for(let i=0;i<n;i++){
             stars += "⭐"
@@ -27,7 +30,7 @@ export default function WFHJobs () {
     return(
         <Grid gap={10} w={{base:"95%",sm:"95%", md:"95%", lg:"80%"}} p={10}>
         <Flex justifyContent="space-between">
-            <Text className="Heading">Work From Home Jobs</Text>
+            <Text className="Heading">{type}</Text>
             <Button variant="ghost" rightIcon={ <ArrowRightIcon />}>VIEW ALL</Button>
         </Flex>
         <Grid templateColumns="repeat(4,1fr)" gap={5}>

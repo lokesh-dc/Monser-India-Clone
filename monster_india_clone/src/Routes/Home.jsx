@@ -2,7 +2,7 @@ import { Box, Button, Grid, GridItem, Input, Tab, TabList, Tabs, Text} from "@ch
 import {NavLink} from "react-router-dom"
 import EmployersDiv from "../Components/LP_EmployersDiv";
 import PremiumBanner from "../Components/Lp_PremiumBanner";
-import WFHJobs from "../Components/LP_WFH_Jobs";
+import JobsGrid from "../Components/Jobs_Grid";
 
 export default function Home () {
     return (
@@ -71,8 +71,8 @@ export default function Home () {
             </Box>
             <EmployersDiv />
             <PremiumBanner />
-            <WFHJobs type="Work From Home Jobs"/>
-            <WFHJobs type="Recent Jobs" />
+            <JobsGrid type="Work From Home Jobs"/>
+            <JobsGrid type="Recent Jobs" />
 
         </Grid>
     )

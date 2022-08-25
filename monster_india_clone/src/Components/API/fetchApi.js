@@ -1,11 +1,12 @@
 import axios from "axios"
 
 
-export function fetchData () {
+export function fetchData (params={}) {
+    console.log(params.limit)
     return axios.get('https://monsterbackend.herokuapp.com/jobs',{
         params:{
-            _page : 1,
-            _limit : 4
+            _page : params.page,
+            _limit : params.limit
 
         }
     })
