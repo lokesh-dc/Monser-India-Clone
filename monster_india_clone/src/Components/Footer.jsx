@@ -4,25 +4,25 @@ export default function Footer () {
     return (
         <>
         <Grid 
-            templateColumns="repeat(4,1fr)"
+            templateColumns={{base:"1fr", sm:"1fr", md:"repeat(3,1fr)", lg:"repeat(3,1fr)" }}
             px = {{base:"2.5%",sm:"2.5", md:"2.5", lg:"10%"}}
             py={5}
             gap={10}
             alignItems="center"
             justifyContent="center"
-            textAlign="center"
             border="1px solid rgba(187, 187, 187, 0.555)"
         >
             <select>
                 <option value="India">India</option>
             </select>
+            <Grid templateColumns={{base:"repeat(2,1fr)", sm : "repeat(2,1fr)" , md:"1fr", lg:"repeat(2,1fr)"}}>
+                <div>
+                    <p>Toll no. : +91-40-66116611</p>
+                    <p>Toll Free No: 1-800-4196666</p>
+                </div>
+                <a href="mailto: info@monsterindia.com">info@monsterindia.com </a>
+            </Grid>
 
-            <div>
-                <p>Toll no. : +91-40-66116611</p>
-                <p>Toll Free No: 1-800-4196666</p>
-            </div>
-
-            <a href="mailto: info@monsterindia.com">info@monsterindia.com </a>
             <Flex className="social">
                 <Img src="https://cdn-icons-png.flaticon.com/512/733/733614.png" alt="" />
                 <Img src="https://cdn-icons-png.flaticon.com/512/733/733635.png" alt="" />
