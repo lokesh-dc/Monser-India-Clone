@@ -36,6 +36,15 @@ box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px
 }
 
 .Heading{
-font-size: 2rem;
-font-weight: bold;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.premium div{
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 20px;
+}
+
+.premium div>p:first-of-type{
+  font-weight: bold;
 }

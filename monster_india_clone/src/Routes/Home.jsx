@@ -3,6 +3,7 @@ import {NavLink} from "react-router-dom"
 import EmployersDiv from "../Components/LP_EmployersDiv";
 import PremiumBanner from "../Components/Lp_PremiumBanner";
 import JobsGrid from "../Components/Jobs_Grid";
+import PremiumServices from "../Components/LP_PremiumServices";
 
 export default function Home () {
     return (
@@ -72,8 +73,9 @@ export default function Home () {
             
             <EmployersDiv />
             <PremiumBanner />
-            <JobsGrid type="Work From Home Jobs"/>
-            <JobsGrid type="Recent Jobs" />
+            <JobsGrid type="WORK FROM HOME JOBS"/>
+            <JobsGrid type="RECENT JOBS" />
+            <PremiumServices />
 
         </Grid>
     )
