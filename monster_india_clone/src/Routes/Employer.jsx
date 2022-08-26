@@ -1,4 +1,4 @@
-import {Box, FormControl, Grid, Input,Text, Button, Divider, Img, Tabs, TabList, Tab, TabPanels, TabPanel, Flex} from "@chakra-ui/react"
+import {Box, FormControl, Grid, Input,Text, Button, Divider, Img, Tabs, TabList, Tab, TabPanels, TabPanel} from "@chakra-ui/react"
 import EmployerTab from "../Components/EmployerTab"
 export default function Employer () {
     return (
