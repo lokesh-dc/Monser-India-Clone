@@ -3,10 +3,12 @@ import {NavLink} from "react-router-dom"
 import EmployersDiv from "../Components/LP_EmployersDiv";
 import PremiumBanner from "../Components/Lp_PremiumBanner";
 import JobsGrid from "../Components/Jobs_Grid";
+import PremiumServices from "../Components/LP_PremiumServices";
+import JobVacancies from "../Components/JobVacancies";
 
 export default function Home () {
     return (
-        <Grid gap="20px" className="landing-div">  
+        <Grid gap="20px" className="landing-div" pb={10}>  
             <Box h="fit-content"
                 backgroundImage="url('https://images.unsplash.com/photo-1520531158340-44015069e78e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1272&q=80')"
                 backgroundSize="cover"
@@ -72,9 +74,10 @@ export default function Home () {
             
             <EmployersDiv />
             <PremiumBanner />
-            <JobsGrid type="Work From Home Jobs"/>
-            <JobsGrid type="Recent Jobs" />
-
+            <JobsGrid type="WORK FROM HOME JOBS"/>
+            <JobsGrid type="RECENT JOBS" />
+            <PremiumServices />
+            <JobVacancies />
         </Grid>
     )
 }

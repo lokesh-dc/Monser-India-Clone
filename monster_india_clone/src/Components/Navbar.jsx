@@ -9,7 +9,6 @@ export default function Navbar() {
             justifyContent="center" 
             alignItems="center" 
             w="100%"
-            border="1px solid"
             px={20} 
             py={5}
             boxShadow="rgba(149, 157, 165, 0.2) 0px 8px 24px;" 
@@ -72,7 +71,9 @@ export default function Navbar() {
                 <NavLink to="/login">
                     <Button size='md' variant='outline' _hover={{bg:"orange", color:"white"}}>JOBSEEKER LOGIN</Button>
                 </NavLink>
-                <Button size='md' variant='outline' _hover={{bg:"orange", color:"white"}}>FOR EMPLOYERS</Button>
+                <NavLink to="/employer">
+                    <Button size='md' variant='outline' _hover={{bg:"orange", color:"white"}}>FOR EMPLOYERS</Button>
+                </NavLink>
             </Grid>
         </Grid>
     )
