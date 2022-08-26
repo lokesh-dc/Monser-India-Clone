@@ -29,14 +29,14 @@ export default function Jobs_Grid ({ type }) {
     }
     let count= 1;
     return(
-        <Grid gap={5} w={{base:"95%",sm:"95%", md:"95%", lg:"80%"}} p={4}>
+        <Grid gap={5} w={{base:"95%",sm:"95%", md:"95%", lg:"80%"}} p={4} px={6}>
         <Flex justifyContent="space-between">
             <Text className="Heading">{type}</Text>
             <Button variant="ghost" rightIcon={ <ArrowRightIcon />}>VIEW ALL</Button>
         </Flex>
         <Grid templateColumns={{base:"1fr", sm:"1fr", md:"repeat(2,1fr)" , lg:"repeat(4,1fr)"}} gap={5}>
             {
-                jobs.map((post)=>(
+                jobs?.map((post)=>(
                     <Skeleton key={count++} isLoaded={jobs.length!==0}>
                         <NavLink to={`/jobs/${post.id}`} >
                         <Grid boxShadow = "rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px" textAlign="center" h="100%" p={5} pt={8} pos="relative"  >

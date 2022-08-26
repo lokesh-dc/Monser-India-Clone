@@ -6,6 +6,7 @@ import JobSearch from "./JobSearch"
 import Login from "./Login"
 import WorkFromHome from "./WFH"
 import ArticleRead from "./ArticleRead"
+import Employer from "./Employer"
 export default function AllRoutes () {
 
     return (
@@ -14,6 +15,7 @@ export default function AllRoutes () {
             <Route path="/login" element={<Login />} />
             <Route path="/work-from-home-jobs" element={<WorkFromHome />}/>
             <Route path="/search" element={<JobSearch/>}/>
+            <Route path="/employer" element={<Employer/>} />
             <Route path="/career-tips" element={<CareerTips/>}/>
             <Route path="*" element={<ErrorPage/>}/>
             <Route path="/jobs/:id" element={<ArticleRead />} />
