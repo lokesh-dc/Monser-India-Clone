@@ -55,3 +55,15 @@ color: rgba(0, 0, 0, 2.185);
   margin-bottom: 20px;
   line-height: 1.6rem;
 }
+
+.App .social{
+  justify-content: space-evenly;
+}
+.App .social >img{
+  width: 25px ;
+  height: 25px;
+}
+
+.App a:hover{
+  text-decoration: underline;
+}
