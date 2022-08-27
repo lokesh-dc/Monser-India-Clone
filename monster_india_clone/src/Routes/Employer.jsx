@@ -1,6 +1,10 @@
 import {Box, FormControl, Grid, Input,Text, Button, Divider, Img, Tabs, TabList, Tab, TabPanels, TabPanel} from "@chakra-ui/react"
+import { useEffect } from "react"
 import EmployerTab from "../Components/EmployerTab"
 export default function Employer () {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
     return (
         <>
         <Box w="100%"

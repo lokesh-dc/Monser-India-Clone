@@ -2,7 +2,7 @@ import { useState } from "react"
 import { useEffect } from "react"
 import { useParams } from "react-router-dom"
 import { fetchJobArticle } from "../Components/API/fetchApi"
-import { Flex, Grid, Button, Icon, Text, Box, Img } from "@chakra-ui/react"
+import { Flex, Grid, Button, Icon, Text, Box } from "@chakra-ui/react"
 import { AiOutlineStar , AiOutlineShareAlt } from "react-icons/ai";
 
 export default function ArticleRead () {
@@ -17,6 +17,9 @@ export default function ArticleRead () {
             console.log(err);
         })
     },[params.id])
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
     return (
         <Grid  w={{base:"95%",sm:"95%", md:"95%", lg:"80%"}} margin="auto" p={4}  >
             <Flex alignItems="center" justifyContent="space-between">

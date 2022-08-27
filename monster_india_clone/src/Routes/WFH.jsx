@@ -75,6 +75,9 @@ export default function WorkFromHome () {
         setSearchParams({page,limit,sort});
     },[page,limit,sort])
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
     
     return (
         <>

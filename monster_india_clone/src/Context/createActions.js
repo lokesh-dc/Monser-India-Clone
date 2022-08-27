@@ -25,3 +25,6 @@ export const data_success = {
     type : "DATA_SUCCESS"
 }
 
+export const logout = {
+    type : "LOGOUT"
+}

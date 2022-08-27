@@ -1,5 +1,5 @@
 import {Box, Button, Grid, GridItem, Input, Text, Img, Flex} from "@chakra-ui/react"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useContext } from "react"
 import {FaFacebook, FaGoogle} from "react-icons/fa"
 import { AppContext } from "../Context/AppContext"
@@ -18,12 +18,15 @@ export default function Login () {
     const {state,dispatch} = useContext(AppContext);
     const [user, setUser] = useState(initState);
 
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
 
     function handleInput (e){
         const {name, value} = e.target;
         setUser({...user, [name] : value});
     }
-    function handleSubmit() {
+    function handleSubmit(user) {
         dispatch(login_request);
         axios.post('https://reqres.in/api/login',
             {
@@ -41,6 +44,16 @@ export default function Login () {
             console.log(err);
         })
     }
+
+    function handleLogin() {
+        const userLogin = {
+            email: "eve.holt@reqres.in",
+            password: "cityslicka"
+        }
+        setUser(userLogin);
+        handleSubmit(userLogin);
+    }
+
     if(state.isAuth){
         return <Navigate to="/" />
     }
@@ -50,27 +63,27 @@ export default function Login () {
     return (   
             <Grid templateRows="100px 2fr 1fr" gap={5} px="20%" py={10}>
                 <Box>
-                    <Text fontSize="4xl" fontWeight="bold">WELCOME BACK !</Text>
-                    <Text>You are just a step away from your dream job.</Text>
+                    <Text className="Heading">WELCOME BACK !</Text>
+                    <Text fontSize='xl' color="grey"> You are just a step away from your dream job.</Text>
                 </Box>
-                <Grid templateColumns="repeat(2,1fr)" alignItems="center" justifyContent="center" border="1px solid grey" >
-                    <GridItem px="5%" paddingRight="50px"  display="grid" gap="3" borderRight="1px solid">
+                <Grid templateColumns={{base:"1fr ",sm:"1fr",md:"1fr",lg:"repeat(2,1fr)"}} alignItems="center" justifyContent="center" border="1px solid grey">
+                    <GridItem px={10} gap={3} display="grid" >
                             <Input type="text" placeholder="Email/Mobile" name="email" onChange={handleInput}/>
                             <Input type="password" placeholder="Password" name="password" onChange={handleInput}/>
                             <Text textAlign="right" color="primary">Forgot Passrord ? </Text>
-                            <Button size="lg" w="100%" bg="primary" color="white" _hover={{bg:"dark_primary"}} onClick={handleSubmit}isLoading={state.isLoading} loadingText="Logging In" >Login</Button>
+                            <Button size="lg" w="100%" bg="primary" color="white" _hover={{bg:"dark_primary"}} onClick={()=>handleSubmit(user)}isLoading={state.isLoading} loadingText="Logging In" >Login</Button>
                             <Button variant='link' size="lg" color="primary" fontWeight="bold" >or, Login via OTP</Button>
                     </GridItem>
-                    <GridItem textAlign="center">
-                        <Text fontSize="2xl" margin={10}>with your social network</Text>
-                        <Grid templateColumns="repeat(2,225px)" justifyContent="center" gap="10"  px="10%" className="Login_Social_Buttons">
-                            <Button leftIcon={<FaGoogle />} _hover={{bg:"#ea4335", color:"white"}}> Login with Google</Button>
-                            <Button leftIcon={<FaFacebook />} _hover={{bg:"#3b5998", color:"white"}}> Login with FaceBook</Button>
+                    <GridItem textAlign="center" p={10} >
+                        <Text fontSize="2xl">with your social network</Text>
+                        <Grid templateColumns="repeat(2,225px)" p={5} justifyContent="center" gap="10"  px="10%" className="Login_Social_Buttons">
+                            <Button leftIcon={<FaGoogle />} _hover={{bg:"#ea4335", color:"white"}} onClick={handleLogin}> Login with Google</Button>
+                            <Button leftIcon={<FaFacebook />} _hover={{bg:"#3b5998", color:"white"}} onClick={handleLogin}> Login with FaceBook</Button>
                         </Grid>
                     </GridItem>
                 </Grid>
 
-                <Grid templateColumns="repeat(2,1fr)" gap={5} alignItems="center" justifyContent="center">
+                <Grid templateColumns={{base:"1fr ",sm:"1fr",md:"1fr",lg:"repeat(2,1fr)"}} gap={5} alignItems="center" justifyContent="center">
                     <GridItem px="5%" py="20px" border="1px solid" display="grid" gap={1}>
                             <Text fontSize="2xl" fontWeight="bold">New To Monster ?</Text>
                             <Text w="75%" color="grey" >Create your profile now and be visible to the top recruiters in the world</Text>

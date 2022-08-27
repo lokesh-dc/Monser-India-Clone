@@ -6,8 +6,12 @@ import {
     Text,
     Button
   } from '@chakra-ui/react'
+import { useEffect } from 'react'
 
 export default function JobSearch () {
+    useEffect(() => {
+        window.scrollTo(0, 0)
+      }, [])
     return (
         <Grid w = {{base:"100%",sm:"100%", md:"100%", lg:"80%"}}  m="auto" p={10}>
             <Text className='Heading' mb={5}>Advanced Job Search</Text>

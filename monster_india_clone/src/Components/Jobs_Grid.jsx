@@ -29,10 +29,12 @@ export default function Jobs_Grid ({ type }) {
     }
     let count= 1;
     return(
-        <Grid gap={5} w={{base:"95%",sm:"95%", md:"95%", lg:"80%"}} p={4} px={6}>
+        <Grid gap={5} w={{base:"95%",sm:"95%", md:"95%", lg:"80%"}} p={8}>
         <Flex justifyContent="space-between">
             <Text className="Heading">{type}</Text>
-            <Button variant="ghost" rightIcon={ <ArrowRightIcon />}>VIEW ALL</Button>
+            <NavLink to="/work-from-home-jobs">
+                <Button variant="ghost" rightIcon={ <ArrowRightIcon />}>VIEW ALL</Button>
+            </NavLink>
         </Flex>
         <Grid templateColumns={{base:"1fr", sm:"1fr", md:"repeat(2,1fr)" , lg:"repeat(4,1fr)"}} gap={5}>
             {
