@@ -6,7 +6,7 @@ import axios from "axios"
         params:{
             _page : params.page,
             _limit : params.limit,
-            _sort : "Job_title",
+            _sort : "Date_Posted",
             _order:  params.sort
         }
     })
@@ -17,8 +17,6 @@ import axios from "axios"
         console.log(err);
     })
 }
-
-
 
  function filter(params={}) {
     return axios.get('https://monsterbackend.herokuapp.com/jobs',{
@@ -34,14 +32,22 @@ import axios from "axios"
     })
 }
 
-
-
 function searchApi(value) {
     return axios.get('https://monsterbackend.herokuapp.com/jobs',{
         params:{
             q: value
         }
     })
+    .then((res)=>{
+        return res.data;
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+}
+
+export function fetchJobArticle(id) {
+    return axios.get(`https://monsterbackend.herokuapp.com/jobs/${id}`)
     .then((res)=>{
         return res.data;
     })

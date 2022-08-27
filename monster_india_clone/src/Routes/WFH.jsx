@@ -92,7 +92,7 @@ export default function WorkFromHome () {
                                 <Img src="https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg?w=826&t=st=1661607682~exp=1661608282~hmac=fafd74e0a56f4f039dfbbce2d4c838cdf60094e902f584a8bca02a5d55ce10a0" alt="Error 404" />
                             </Flex> :
                             articles?.map((article)=>(
-                                <ArticleDiv article={article} />
+                                <ArticleDiv article={article} key={article.id}/>
                                 ))
                         }
                         {   

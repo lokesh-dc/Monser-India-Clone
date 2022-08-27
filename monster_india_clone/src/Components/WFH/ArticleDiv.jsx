@@ -1,7 +1,7 @@
 import { Button, Flex, Grid, Icon, Skeleton, Text} from "@chakra-ui/react";
 import { useContext } from "react";
 import { AiOutlineStar , AiOutlineShareAlt } from "react-icons/ai";
-import { NavLink } from "react-router-dom";
+import { Navigate, NavLink } from "react-router-dom";
 import { AppContext } from "../../Context/AppContext";
 export default function ArticleDiv({article}) {
     const {state} = useContext(AppContext);
@@ -11,8 +11,15 @@ export default function ArticleDiv({article}) {
         )
     }
     function handleAddToStar () {
-        alert("star");
+        if(!state.isAuth){
+            alert("please login")
+            return (<Navigate to="/login" />)
+        }
+        
+        
     }
+
+
     return (
         <Grid  boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" key={article.id}>
         <NavLink to={`/jobs/${article.id}`} key={article.id} >
