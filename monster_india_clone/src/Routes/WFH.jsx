@@ -78,24 +78,30 @@ export default function WorkFromHome () {
     
     return (
         <>
-        <SearchingDiv Search={Search} />
-
-        <Grid templateColumns={{base:"1fr", sm:"1fr", md:"1fr", lg:"1fr 3fr"}} w="80%" margin="auto"  gap={10} p={10}>
-            <FilteringDiv filteringData={filteringData}/>
-            <Grid gap={5} >
-                <SortingDiv handleSortingChange={handleSortingChange} initLimit={initLimit} handleLimitChange={handleLimitChange} initSortMethod={initSortMethod}/>
-                {
-                    state.isError ? 
-                    <Flex justifyContent="center">
-                        <Img src="https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg?w=826&t=st=1661607682~exp=1661608282~hmac=fafd74e0a56f4f039dfbbce2d4c838cdf60094e902f584a8bca02a5d55ce10a0" alt="Error 404" />
-                    </Flex> :
-                    articles?.map((article)=>(
-                        <ArticleDiv article={article} />
-                    ))
-                }
-                <Pagination currentPage={page} handlePageChange={handlePageChange} handleSortingChnage={handleSortingChange}/>
+            <SearchingDiv Search={Search} />
+            <Grid templateColumns={{base:"1fr", sm:"1fr", md:"1fr", lg:"1fr 3fr"}} w="80%" margin="auto"  gap={10} p={10}>
+                <FilteringDiv filteringData={filteringData}/>
+                    <Grid gap={5} >
+                        {
+                            state.isLoading!==true &&
+                            <SortingDiv handleSortingChange={handleSortingChange} initLimit={initLimit} handleLimitChange={handleLimitChange} initSortMethod={initSortMethod}/>
+                        }
+                        {
+                            state.isError ? 
+                            <Flex justifyContent="center">
+                                <Img src="https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg?w=826&t=st=1661607682~exp=1661608282~hmac=fafd74e0a56f4f039dfbbce2d4c838cdf60094e902f584a8bca02a5d55ce10a0" alt="Error 404" />
+                            </Flex> :
+                            articles?.map((article)=>(
+                                <ArticleDiv article={article} />
+                                ))
+                        }
+                        {   
+                            state.isLoading!==true &&
+                            <Pagination currentPage={page} handlePageChange={handlePageChange} handleSortingChnage={handleSortingChange}/>
+                        }
+                    </Grid>
             </Grid>
-        </Grid>
+
         </>
     )
 }
