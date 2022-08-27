@@ -11,6 +11,9 @@ width: 126px;
 height: 42px;
 }
 
+.App {
+  background-color: rgba(129, 129, 129, 0.274);
+}
 .App .landing-div{
 width: 100%;
 }
@@ -62,8 +65,4 @@ color: rgba(0, 0, 0, 2.185);
 .App .social >img{
   width: 25px ;
   height: 25px;
-}
-
-.App a:hover{
-  text-decoration: underline;
 }
