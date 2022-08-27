@@ -5,7 +5,8 @@ import { fetchData } from "../Components/API/fetchApi"
 import CheckboxCreator from "../Components/CheckboxCreator"
 import { Icon } from '@chakra-ui/react'
 import { AiOutlineStar , AiOutlineShareAlt } from "react-icons/ai";
-
+import Pagination from "../Components/Pagination"
+import { useSearchParams } from "react-router-dom"
 const menu = [
     ['Sales', 'Software Eng', 'Customer Service', 'Voice Process', 'Java', 'Operations', 'Good Communication', 'Problem Solver' ],
     ['New York', 'Rego Park','West New York', 'Williston Park', 'Brooklyn', 'Maspeth', 'Paramus', 'West Orange' ],
@@ -17,13 +18,14 @@ const menu = [
 let head = ['Skills', 'Location', 'Industry','Funcion','Roles','Company'];
 
 export default function WorkFromHome () {
-
+    const [searchParams, setSearchParams] = useSearchParams();
+    console.log(searchParams.get("limit"));
     const [page,setPage] = useState(1);
     const [limit,setLimit] = useState(25);
     const [articles, setArticles] = useState([]);
 
     function handlePageChange() {
-        
+        setPage(prev=>prev+1);
     }
 
     useEffect(()=>{
@@ -95,7 +97,7 @@ export default function WorkFromHome () {
             </Flex>
             {
                 articles?.map((article)=>(
-                    <Grid  boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px">
+                    <Grid  boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" key={article.id}>
                         <Grid key={article.id} gap="5px" p={3} pos="relative" bg="white">
                             <Text fontSize="xl" fontWeight="600">{article.Job_title}</Text>
                             <Text color="primary">{article.Company}</Text>
@@ -121,6 +123,8 @@ export default function WorkFromHome () {
             }
         </Grid>
         </Grid>
+
+        <Pagination currentPage={page} handlePageChange={handlePageChange}/>
         </>
     )
 }
