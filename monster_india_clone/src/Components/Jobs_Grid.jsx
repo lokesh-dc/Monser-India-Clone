@@ -10,7 +10,7 @@ export default function Jobs_Grid ({ type }) {
     const page = type === "Recent Jobs" ? 1 : 2 ;
     const limit = 4;
     useEffect(()=>{
-        fetchData({page,limit})
+        fetchData({page,limit,})
         .then((res)=>{
             setJobs(res);
         })

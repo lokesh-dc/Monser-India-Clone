@@ -1,130 +1,101 @@
-import {Accordion, AccordionButton, AccordionIcon, AccordionItem, AccordionPanel, Box, Button, Divider, Flex, Grid, Input, Select, Text} from "@chakra-ui/react"
+import { Flex, Grid, Img } from "@chakra-ui/react"
 import { useState } from "react"
 import { useEffect } from "react"
-import { fetchData } from "../Components/API/fetchApi"
-import CheckboxCreator from "../Components/CheckboxCreator"
-import { Icon } from '@chakra-ui/react'
-import { AiOutlineStar , AiOutlineShareAlt } from "react-icons/ai";
-import Pagination from "../Components/Pagination"
+import { fetchData , filter, searchApi } from "../Components/API/fetchApi"
 import { useSearchParams } from "react-router-dom"
-const menu = [
-    ['Sales', 'Software Eng', 'Customer Service', 'Voice Process', 'Java', 'Operations', 'Good Communication', 'Problem Solver' ],
-    ['New York', 'Rego Park','West New York', 'Williston Park', 'Brooklyn', 'Maspeth', 'Paramus', 'West Orange' ],
-    ['Finance', "Software", 'Information Technology', 'Business Services', 'Health Care', 'Retail', 'Construction, Repair & Maintenance', 'Architecture'],
-    ['Chief Marketing Officer (CMO)', "Dental Hygienist", 'National Debt Relief', 'National Advocates for Pregnant Women', 'Emergency Veterinarian - NYC', 'ABA Therapist', 'Construction Project Manager', 'Diesel Mechanic'],
-    ['Finance', "Software", 'Information Technology', 'Business Services', 'Health Care', 'Retail', 'Construction, Repair & Maintenance', 'Architecture'],
-    ['Chief Marketing Officer (CMO)', "Dental Hygienist", 'National Debt Relief', 'National Advocates for Pregnant Women', 'Emergency Veterinarian - NYC', 'ABA Therapist', 'Construction Project Manager', 'Diesel Mechanic'],
-];
-let head = ['Skills', 'Location', 'Industry','Funcion','Roles','Company'];
+import { FilteringDiv } from "../Components/WFH/FilteringDiv"
+import { useContext } from "react"
+import { AppContext } from "../Context/AppContext"
+import Pagination from "../Components/Pagination"
+import SearchingDiv from "../Components/WFH/SearchingDiv"
+import ArticleDiv from "../Components/WFH/ArticleDiv"
+import SortingDiv from "../Components/WFH/SortingDiv"
+import { data_failure, data_Loading, data_success } from "../Context/createActions"
+
 
 export default function WorkFromHome () {
     const [searchParams, setSearchParams] = useSearchParams();
-    console.log(searchParams.get("limit"));
-    const [page,setPage] = useState(1);
-    const [limit,setLimit] = useState(25);
+    const initPage = Number(searchParams.get("page")) || 1;
+    const [page,setPage] = useState(initPage);
+    const initLimit = Number(searchParams.get("limit")) || 25;
+    const [limit,setLimit] = useState(initLimit);
+    const initSortMethod = searchParams.get("sort") || "asc"
+    const [sort,setSort] = useState(initSortMethod);
     const [articles, setArticles] = useState([]);
+    const {state,dispatch} = useContext(AppContext);
 
-    function handlePageChange() {
-        setPage(prev=>prev+1);
+    function handlePageChange(value) {
+        setPage(prev=>prev+value);
+    }
+    function handleLimitChange(e) {
+        setLimit(e.target.value);
+    }
+    function handleSortingChange(e) {
+        setSort(e.target.value)
+    }
+    function filteringData(name) {
+        dispatch(data_Loading)
+        filter({name})
+            .then((res)=>{
+                setArticles(res);
+                dispatch(data_success);
+            })
+            .catch((err)=>{
+                console.log(err)
+                dispatch(data_failure);
+            })
     }
 
-    useEffect(()=>{
-        fetchData({page,limit})
+    function Search (value) {
+        dispatch(data_Loading)
+        searchApi(value)
         .then((res)=>{
             setArticles(res);
+            dispatch(data_success);
+        })
+        .catch((err)=>{
+            console.log(err)
+            dispatch(data_failure);
+        })
+    }
+    useEffect(()=>{
+        dispatch(data_Loading)
+        fetchData({page,limit, sort})
+        .then((res)=>{
+            setArticles(res);
+            dispatch(data_success);
         })
         .catch((err)=>{
             console.log(err);
+            dispatch(data_failure);
         })
-    },[page,limit])
+    },[page,limit,sort])
 
+    useEffect(()=>{
+        setSearchParams({page,limit,sort});
+    },[page,limit,sort])
+
+    
     return (
         <>
-        <Grid bg="white" templateColumns="2fr 1fr 1fr 1fr" px = {{base:"2.5%",sm:"2.5", md:"2.5", lg:"10%"}} py="10px" bacground="white" mt={5}>
-            <Input type="text" placeholder="Search by skills, company & Job" />
-            <Input type="text" placeholder="Location" />
-            <Select placeholder="Experience">
-                <option value="0">O Years</option>
-                <option value="0">1 Years</option>
-                <option value="0">2 Years</option>
-                <option value="0">3 Years</option>
-            </Select>
-            <Button bg="primary" color="white">Search</Button>
-        </Grid>
+        <SearchingDiv Search={Search} />
 
         <Grid templateColumns={{base:"1fr", sm:"1fr", md:"1fr", lg:"1fr 3fr"}} w="80%" margin="auto"  gap={10} p={10}>
-            <Box bg="white" height="fit-content">
-            <Text fontSize="xl" p={2} color="grey">Filter By </Text>
-            <Divider />
-            {
-                menu.map((item,index)=>(
-                    <Accordion  allowMultiple key={index} allowToggle >
-                        <AccordionItem>
-                        <Text >
-                            <AccordionButton>
-                                <Box flex='1' textAlign='left' fontWeight="bold" fontSize="md">{head[index]}</Box>
-                                <AccordionIcon />
-                            </AccordionButton>
-                        </Text>
-                        <AccordionPanel pb={4} display="grid">
-                            <CheckboxCreator data = {item}/>
-                        </AccordionPanel>
-                    </AccordionItem>
-
-                </Accordion>
-                ))
-        }
-        </Box>
-        <Grid gap={5} >
-            <Flex alignItems="center" justifyContent="space-evenly" border="1px solid " bg="white" p={2}>
-                <Grid alignItems="center" gap={5} templateColumns="repeat(3,1fr)"> 
-                    <Text>Show: </Text>
-                    <Select >
-                        <option value="25">25</option>
-                        <option value="25">50</option>
-                    </Select>
-                    <Text>per page </Text>
-                </Grid>
-                <Grid alignItems="center" gap={5} templateColumns="repeat(3,1fr)"> 
-                    <Text>Sort by: </Text>
-                    <Select >
-                        <option value="asc">Relevance</option>
-                        <option value="desc">Freshness</option>
-                    </Select>
-                    <Text>per page </Text>
-                </Grid>
-
-            </Flex>
-            {
-                articles?.map((article)=>(
-                    <Grid  boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" key={article.id}>
-                        <Grid key={article.id} gap="5px" p={3} pos="relative" bg="white">
-                            <Text fontSize="xl" fontWeight="600">{article.Job_title}</Text>
-                            <Text color="primary">{article.Company}</Text>
-                            <Flex justifyContent="space-between">
-                                <Text><b> Location : </b>  {article.City}, {article.State}</Text>
-                                <Text><b> Job Type : </b> {article.Job_Type}</Text>
-                                <Text><b> Application Deadline : </b>  {article.Valid_until}</Text>       
-                            </Flex>
-                            <Text><b>Skills : </b> Communication Skills, Critical Thinking, Problem Solving </Text>
-                            <Text ><b>Description :</b> {article.Job_Desc.substring(0,120)}...</Text>
-                            <Text pos="absolute" top="0" right="0" p={1} bg="orange" color="white" w="300px" textAlign="center">{article.Industry==="" ? "Software Development" : article.Industry}</Text>
-                        </Grid>
-                            <Flex alignItems="center" justifyContent="space-between"  bg="rgba(129, 129, 129, 0.194)" p={2} >
-                                <Text><b>Posted on :</b> {article.Date_Posted}</Text>
-                                <Flex alignItems="center" gap={3}>
-                                    <Icon w={6} h={6} as={AiOutlineStar} />
-                                    <Icon w={6} h={6} as={AiOutlineShareAlt} />
-                                    <Button variant="outline" colorScheme="purple" _hover={{bg:"primary", color:"white"}}>APPLY</Button>
-                                </Flex>
-                            </Flex>
-                    </Grid>
-                ))
-            }
+            <FilteringDiv filteringData={filteringData}/>
+            <Grid gap={5} >
+                <SortingDiv handleSortingChange={handleSortingChange} initLimit={initLimit} handleLimitChange={handleLimitChange} initSortMethod={initSortMethod}/>
+                {
+                    state.isError ? 
+                    <Flex justifyContent="center">
+                        <Img src="https://img.freepik.com/free-vector/oops-404-error-with-broken-robot-concept-illustration_114360-5529.jpg?w=826&t=st=1661607682~exp=1661608282~hmac=fafd74e0a56f4f039dfbbce2d4c838cdf60094e902f584a8bca02a5d55ce10a0" alt="Error 404" />
+                    </Flex> :
+                    articles?.map((article)=>(
+                        <ArticleDiv article={article} />
+                    ))
+                }
+                <Pagination currentPage={page} handlePageChange={handlePageChange} handleSortingChnage={handleSortingChange}/>
+            </Grid>
         </Grid>
-        </Grid>
-
-        <Pagination currentPage={page} handlePageChange={handlePageChange}/>
         </>
     )
 }

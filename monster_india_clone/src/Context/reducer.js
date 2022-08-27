@@ -6,6 +6,12 @@ export default function reducer (state, action) {
             return {...state,isLoading:false, isError : true}
         case 'LOGIN_SUCCESS' :
             return {...state, isLoading:false, isError: false, user: action.payload, isAuth:true}
+        case 'DATA_LOADING' :
+            return {...state, isLoading: true}
+        case 'DATA_FAILURE' : 
+            return {...state, isLoading :false, isError:true }
+        case "DATA_SUCCESS" :
+            return {...state, isLoading:false, isError:false}
         default : 
             return state
 
