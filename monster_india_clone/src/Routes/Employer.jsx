@@ -32,7 +32,7 @@ export default function Employer () {
 
 
         <Grid textAlign="center" w={{base:"95%",sm:"95%", md:"95%", lg:"80%"}} m="auto" gap={5}>
-            <Text fontSize="6xl">Our <b> Services </b></Text>
+            <Text fontSize="6xl" >Our <b> Services </b></Text>
             <Text mb={10} fontSize="xl" color="grey">For employers who need great people. Find Better, Faster</Text>
             <Tabs variant='unstyled' >
                 <TabList display="flex" justifyContent="space-evenly" >

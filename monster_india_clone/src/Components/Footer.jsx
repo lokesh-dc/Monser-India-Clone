@@ -32,9 +32,11 @@ export default function Footer () {
 
         </Grid>
 
-        <Grid bg="primary"  color="white" templateColumns="repeat(5,1fr)" 
+        <Grid bg="primary"  color="white" templateColumns={{base:"1fr 1fr",sm:"1fr 1fr", md:"1fr 1fr",lg:"repeat(5,1fr)"}} 
                 px = {{base:"2.5%",sm:"2.5", md:"2.5", lg:"10%"}}
-                py="50px">
+                py="50px"
+                gap={10}
+                >
             <Grid>
                 <Text className="Sub-Heading">Job Seekers</Text>
                 <NavLink to="/search">Job Search</NavLink>

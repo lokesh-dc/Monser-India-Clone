@@ -12,7 +12,7 @@ export default function BackgroundBox () {
                 backgroundRepeat="none"
                 backgroundPosition="center"
             >
-                <Text fontSize={{base:"2xl", lg:"4xl"}} fontWeight="bold" color="black" mb={5}>
+                <Text fontSize={{base:"2xl", lg:"4xl"}} fontWeight="bold" color="black" className="Heading" mb={5}>
                     500,000+ Jobs. Find Better. Faster
                 </Text>
 
@@ -24,15 +24,21 @@ export default function BackgroundBox () {
                                 <NavLink to="/work-from-home-jobs">
                                     <Tab _selected={{ color: 'white', bg: 'black' }}>Work From Home</Tab>
                                 </NavLink>
-                                <NavLink to="/search">
+                                <NavLink to="/work-from-home-jobs">
                                     <Tab _selected={{ color: 'white', bg: 'black' }}>TRIUMPH Jobs</Tab>
                                 </NavLink>
-                                <Tab _selected={{ color: 'white', bg: 'black' }}>Contract Jobs</Tab>
-                                <Tab _selected={{ color: 'white', bg: 'black' }}>Fresher Jobs</Tab>
+                                <NavLink to="/work-from-home-jobs">
+                                    <Tab _selected={{ color: 'white', bg: 'black' }}>Contract Jobs</Tab>
+                                </NavLink>
+                                <NavLink to="/work-from-home-jobs">
+                                    <Tab _selected={{ color: 'white', bg: 'black' }}>Fresher Jobs</Tab>
+                                </NavLink>
                             </TabList>
                             <Grid templateColumns="3fr 1fr" py="30px" >
                                 <Input type="text" bg="white" color="black" placeholder="Search by Skills, Company, & Job Title " />
-                                <Button size="md" bg="primary">Search</Button>
+                                <NavLink to="/work-from-home-jobs">
+                                    <Button size="md" bg="primary">Search</Button>
+                                </NavLink>
                             </Grid>
                             <Text textAlign='right'>Advanced Search</Text>
                             <Text w='90%'> <b>Trending Searches : </b> 
@@ -50,7 +56,9 @@ export default function BackgroundBox () {
                                        <Text color="red" fontWeight="bold"> REGISTER WITH US </Text>
                                     </NavLink>
                                     <Text>or</Text>
-                                    <Button size="md" py="10" color="white" lineHeight="2rem" bg="orange">UPLOAD RESUME <br /> We will create your Profile</Button>
+                                    <NavLink to="/login">
+                                        <Button size="md" py="10" color="white" lineHeight="2rem" _hover={{bg:"primary"}} bg="orange">UPLOAD RESUME <br /> We will create your Profile</Button>
+                                    </NavLink>
                                 </Box>
                             </GridItem>
                             <GridItem bg="white;" p={5} lineHeight="3.3rem" h="100%">

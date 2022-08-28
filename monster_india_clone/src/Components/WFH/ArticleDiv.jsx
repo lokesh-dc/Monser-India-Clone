@@ -23,7 +23,7 @@ export default function ArticleDiv({article}) {
     return (
         <Grid  boxShadow="rgba(100, 100, 111, 0.2) 0px 7px 29px 0px" key={article.id}>
         <NavLink to={`/jobs/${article.id}`} key={article.id} >
-            <Grid key={article.id} gap="5px" p={3} pos="relative" bg="white">
+            <Grid key={article.id} gap="5px" p={3} pos="relative" pt={{base:"10",sm:"10",md:"10",lg:"4"}} bg="white">
                 <Text fontSize="xl" fontWeight="600">{article.Job_title}</Text>
                 <Text color="primary">{article.Company}</Text>
                 <Flex justifyContent="space-between">
@@ -33,7 +33,7 @@ export default function ArticleDiv({article}) {
                 </Flex>
                     <Text><b>Skills : </b> Communication Skills, Critical Thinking, Problem Solving </Text>
                     <Text ><b>Description :</b> {article.Job_Desc.substring(0,120)}...</Text>
-                     <Text pos="absolute" top="0" right="0" p={1} bg="orange" color="white" w="300px" textAlign="center">{article.Industry==="" ? "Software Development" : article.Industry}</Text>
+                     <Text pos="absolute" top="0" right="0" p={1}  bg="orange" color="white" w="300px" textAlign="center">{article.Industry==="" ? "Software Development" : article.Industry}</Text>
             </Grid>
             </NavLink>
 

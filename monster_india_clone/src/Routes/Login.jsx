@@ -61,7 +61,7 @@ export default function Login () {
         return <Navigate to="*" />
     }
     return (   
-            <Grid templateRows="100px 2fr 1fr" gap={5} px="20%" py={10}>
+            <Grid templateRows="100px 2fr 1fr" gap={5} px={{lg:"20%"}} py={10}>
                 <Box>
                     <Text className="Heading">WELCOME BACK !</Text>
                     <Text fontSize='xl' color="grey"> You are just a step away from your dream job.</Text>
