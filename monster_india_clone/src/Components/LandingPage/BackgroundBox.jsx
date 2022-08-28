@@ -1,7 +1,10 @@
 import { Box, Button, Grid, GridItem, Input, Tab, TabList, Tabs, Text} from "@chakra-ui/react";
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AppContext } from "../../Context/AppContext";
 
 export default function BackgroundBox () {
+    const {state, dispatch} = useContext(AppContext);
     return (
         <Box h="fit-content"
                 backgroundImage="url('https://images.unsplash.com/photo-1520531158340-44015069e78e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1272&q=80')"
@@ -49,6 +52,8 @@ export default function BackgroundBox () {
                         </GridItem>
                     <GridItem bg="rgba(0, 0, 0, 0.522);" p={4}>
                         <Grid templateColumns={{ base: "1fr 1fr", lg: "260px 260px" }} gap={4} h="100%" color="black" textAlign="center">
+                            {
+                                state.isAuth!==true ? 
                             <GridItem bg="white;" p={5} lineHeight="2.8rem">
                                 <Box>
                                     <Text fontSize="md" fontWeight="bold">NEW TO MONSTER ?</Text>
@@ -60,7 +65,15 @@ export default function BackgroundBox () {
                                         <Button size="md" py="10" color="white" lineHeight="2rem" _hover={{bg:"primary"}} bg="orange">UPLOAD RESUME <br /> We will create your Profile</Button>
                                     </NavLink>
                                 </Box>
+                            </GridItem> :
+                            <GridItem bg="white;" p={5} lineHeight="2.8rem">
+                               <Text fontSize="md" fontWeight="bold">WELCOME </Text>
+                               <Text>{state.user.Email}</Text>
+                               <NavLink to="/career-tips">
+                                        <Button size="md" py="10" color="white" lineHeight="2rem" _hover={{bg:"primary"}} bg="orange">LATEST ARTICLES / <br /> Recently Viewed Articles </Button>
+                                    </NavLink>
                             </GridItem>
+                            }
                             <GridItem bg="white;" p={5} lineHeight="3.3rem" h="100%">
                                 <Box>
                                     <Text fontSize="md" fontWeight="bold">FREE JOB ALERT</Text>

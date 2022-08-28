@@ -59,7 +59,7 @@ export function fetchJobArticle(id) {
 function searchFilteredArticles (params={}) {
     return axios.get(`https://monsterbackend.herokuapp.com/jobs`,{
         params:{
-            q : params.q==="" ? "Finance" : params.q,
+            q : params.q,
             Industry : params.Industry,
             Job_title : params.Job_title,
             _limit : 26
