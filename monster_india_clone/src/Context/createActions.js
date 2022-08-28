@@ -29,6 +29,9 @@ export const logout = {
     type : "LOGOUT"
 }
 
+export const logout_success = {
+    type : "LOGOUT_SUCCESS"
+}
 export const set_query = (data) => {
     return {
         type : "SET_QUERY" ,

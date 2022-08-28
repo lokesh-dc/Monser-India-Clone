@@ -1,34 +1,29 @@
-import { Button, Modal, ModalBody, ModalCloseButton, ModalContent, ModalFooter, ModalHeader, ModalOverlay, useDisclosure } from "@chakra-ui/react";
+import { Button, Menu, MenuButton, MenuItem, MenuList,  } from "@chakra-ui/react";
 import { useContext } from "react";
 import { AppContext } from "../Context/AppContext";
-import { logout } from '../Context/createActions';
-
+import {  logout, logout_success } from '../Context/createActions';
+import { ChevronDownIcon } from "@chakra-ui/icons"
 export default function LogOut () {
     const {state, dispatch} = useContext(AppContext);
-    const { isOpen, onOpen, onClose } = useDisclosure()
     function handleLogout () {
-        dispatch(logout);
+        dispatch(logout_success)
+        setTimeout(()=>{
+            dispatch(logout)
+        },1000)
     }
     return (
         <>
-            <Button onClick={onOpen} size='md' variant='outline' _hover={{bg:"orange", color:"white"}} >{state.user.Email}</Button>
-                <Modal isOpen={isOpen} onClose={onClose}>
-                    <ModalOverlay />
-                    <ModalContent>
-                    <ModalHeader>Modal Title</ModalHeader>
-                    <ModalCloseButton />                        
-                        <ModalBody>
-                            Do you want to Log out ?
-                        </ModalBody>
-
-                        <ModalFooter>
-                            <Button colorScheme='blue' mr={3} onClick={onClose}>
-                                No
-                            </Button>
-                            <Button variant='ghost' onClick={handleLogout}  isLoading={state.isLoading} loadingText="Logging Out">Log out</Button>
-                        </ModalFooter>
-                        </ModalContent>
-                    </Modal>    
+            {/* <Button onClick={onOpen} size='md' variant='outline' _hover={{bg:"orange", color:"white"}} ></Button> */}
+            <Menu>
+                <MenuButton as={Button} rightIcon={<ChevronDownIcon />} isLoading={state.isLoggingOut} loadingText="Logging out">
+                {state.user.Email}
+                </MenuButton>
+                <MenuList>  
+                    <MenuItem>Profile</MenuItem>
+                    <MenuItem>Starred Articles</MenuItem>
+                    <MenuItem onClick={handleLogout} >Logout</MenuItem>
+                </MenuList>
+                </Menu>
         </>
     )
 }
