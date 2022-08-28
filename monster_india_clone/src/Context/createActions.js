@@ -28,3 +28,17 @@ export const data_success = {
 export const logout = {
     type : "LOGOUT"
 }
+
+export const logout_success = {
+    type : "LOGOUT_SUCCESS"
+}
+export const set_query = (data) => {
+    return {
+        type : "SET_QUERY" ,
+        payload : data
+    }
+}
+
+export const reset_query = {
+    type : "RESET_QUERY"
+}

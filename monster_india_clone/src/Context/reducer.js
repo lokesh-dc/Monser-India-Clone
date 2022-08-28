@@ -13,7 +13,13 @@ export default function reducer (state, action) {
         case "DATA_SUCCESS" :
             return {...state, isLoading:false, isError:false}
         case "LOGOUT" : 
-            return {...state, isLoading:false, isAuth: false, user : {Email : "",Token : "" }}
+            return {...state, isLoggingOut:false, isAuth: false, user : {Email : "",Token : "" }}
+        case "LOGOUT_SUCCESS" :
+            return {...state, isLoggingOut:true}
+        case "SET_QUERY"  :
+            return {...state, isLoading:true, query : action.payload}
+        case "RESET_QUERY" :
+            return {...state, query: ""}
         default : 
             return state
 

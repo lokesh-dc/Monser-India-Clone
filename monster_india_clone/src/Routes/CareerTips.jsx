@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react"
-import { Flex, Grid, Text} from "@chakra-ui/react"
+import { Grid, Text} from "@chakra-ui/react"
 import { fetchData } from "../Components/API/fetchApi"
 import { AppContext } from "../Context/AppContext"
 import { data_failure, data_Loading, data_success } from "../Context/createActions"
@@ -27,7 +27,7 @@ export default function CareerTips () {
     return (
         <Grid w={{base:"95%",sm:"95%", md:"95%", lg:"80%"}} margin="auto" p={8} >
                 <Text className="Heading">LATEST ARTICLES</Text>
-            <Grid gap={5} templateColumns="repeat(2,1fr)" >
+            <Grid gap={5} templateColumns={{base:"1fr",sm:"1fr",md:"repeat(2,1fr)", lg:"repeat(2,1fr)"}} >
                 {
                 articles?.map((article)=>(
                     <ArticleDiv article={article} key={article.id}/>

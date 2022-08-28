@@ -1,4 +1,4 @@
-import {Flex, Grid, Img, Text} from "@chakra-ui/react"
+import {Flex, Grid, Img, Select, Text} from "@chakra-ui/react"
 import { NavLink } from "react-router-dom"
 export default function Footer () {
     return (
@@ -12,9 +12,11 @@ export default function Footer () {
             justifyContent="center"
             border="1px solid rgba(187, 187, 187, 0.555)"
         >
-            <select>
-                <option value="India">India</option>
-            </select>
+            <Select>
+                <option value="India">IN</option>
+                <option value="India">US</option>
+                <option value="India">UK</option>
+            </Select>
             <Grid templateColumns={{base:"repeat(2,1fr)", sm : "repeat(2,1fr)" , md:"1fr", lg:"repeat(2,1fr)"}}>
                 <div>
                     <p>Toll no. : +91-40-66116611</p>
@@ -32,9 +34,11 @@ export default function Footer () {
 
         </Grid>
 
-        <Grid bg="primary"  color="white" templateColumns="repeat(5,1fr)" 
+        <Grid bg="primary"  color="white" templateColumns={{base:"1fr 1fr",sm:"1fr 1fr", md:"1fr 1fr",lg:"repeat(5,1fr)"}} 
                 px = {{base:"2.5%",sm:"2.5", md:"2.5", lg:"10%"}}
-                py="50px">
+                py="50px"
+                gap={10}
+                >
             <Grid>
                 <Text className="Sub-Heading">Job Seekers</Text>
                 <NavLink to="/search">Job Search</NavLink>

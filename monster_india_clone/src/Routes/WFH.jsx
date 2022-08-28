@@ -39,6 +39,7 @@ export default function WorkFromHome () {
             .then((res)=>{
                 setArticles(res);
                 dispatch(data_success);
+                setPage(1);
             })
             .catch((err)=>{
                 console.log(err)
@@ -52,6 +53,7 @@ export default function WorkFromHome () {
         .then((res)=>{
             setArticles(res);
             dispatch(data_success);
+            setPage(1);
         })
         .catch((err)=>{
             console.log(err)

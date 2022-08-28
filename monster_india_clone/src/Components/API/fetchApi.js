@@ -56,5 +56,22 @@ export function fetchJobArticle(id) {
     })
 }
 
+function searchFilteredArticles (params={}) {
+    return axios.get(`https://monsterbackend.herokuapp.com/jobs`,{
+        params:{
+            q : params.q,
+            Industry : params.Industry,
+            Job_title : params.Job_title,
+            _limit : 26
+        }
+    })
+    .then((res)=>{
+        return res.data;
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+}
 
-export {fetchData, filter, searchApi};
+
+export {fetchData, filter, searchApi, searchFilteredArticles};

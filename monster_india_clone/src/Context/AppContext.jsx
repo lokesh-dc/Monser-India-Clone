@@ -6,6 +6,7 @@ import reducer from "./reducer";
 export const AppContext = createContext();
 const initState = {
     isLoading:false,
+    isLoggingOut:false,
     isError:false,
     isAuth:false,
     query : "" ,

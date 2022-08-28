@@ -55,13 +55,13 @@ export default function Login () {
     }
 
     if(state.isAuth){
-        return <Navigate to="/" />
+        return <Navigate to="/work-from-home-jobs" />
     }
     if(state.isError){
         return <Navigate to="*" />
     }
     return (   
-            <Grid templateRows="100px 2fr 1fr" gap={5} px="20%" py={10}>
+            <Grid templateRows="100px 2fr 1fr" gap={5} px={{lg:"20%"}} py={10}>
                 <Box>
                     <Text className="Heading">WELCOME BACK !</Text>
                     <Text fontSize='xl' color="grey"> You are just a step away from your dream job.</Text>

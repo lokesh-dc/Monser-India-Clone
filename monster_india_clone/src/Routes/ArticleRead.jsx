@@ -30,8 +30,8 @@ export default function ArticleRead () {
                     <Button variant="outline" colorScheme="purple" _hover={{bg:"primary", color:"white"}}>APPLY</Button>
                 </Flex>
             </Flex>
-            <Box boxShadow = "rgba(0, 0, 0, 0.35) 0px 5px 15px" p={10} pos="relative" my={10}>
-                <Text pos="absolute" top="-20px" right="-20px" bg="orange" p={4} color="white">
+            <Box boxShadow = "rgba(0, 0, 0, 0.35) 0px 5px 15px" p={10}  pos="relative" my={10}>
+                <Text pos="absolute" top="-20px" right="-20px" bg="orange" p={4}  color="white">
                     {article.Industry==="" && "Software Development"}
                 </Text>
                 <Text className="Heading"> {article.Job_title} </Text>
