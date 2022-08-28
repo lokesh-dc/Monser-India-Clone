@@ -5,10 +5,10 @@ export default function JobVacancies() {
     
 
     return (
-        <Box w={{base:"95%",sm:"95%", md:"95%", lg:"80%"}} margin="auto" p={4} pb={0}>
+        <Box w={{base:"95%",sm:"95%", md:"95%", lg:"80%"}} margin="auto" p={10} pb={0}>
             <Text className="Heading">FIND JOB VACANCIES BY </Text>
-            <Tabs variant='unstyled' p={5}>
-            <TabList  display="flex" justifyContent="space-between">
+            <Tabs p={5}>
+            <TabList display="flex" gap={10}>
                 <Tab _selected={{ color: 'white', bg: 'primary' }}>Skills</Tab>
                 <Tab _selected={{ color: 'white', bg: 'primary' }}>Location</Tab>
                 <Tab _selected={{ color: 'white', bg: 'primary' }}>Industry</Tab>

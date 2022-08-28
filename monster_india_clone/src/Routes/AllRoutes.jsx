@@ -17,8 +17,8 @@ export default function AllRoutes () {
             <Route path="/search" element={<JobSearch/>}/>
             <Route path="/employer" element={<Employer/>} />
             <Route path="/career-tips" element={<CareerTips/>}/>
-            <Route path="*" element={<ErrorPage/>}/>
             <Route path="/jobs/:id" element={<ArticleRead />} />
+            <Route path="*" element={<ErrorPage/>}/>
          </Routes>
     )
 

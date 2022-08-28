@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed&display=swap');
+
 
 .App .landing-div{
   background-color: rgba(80, 80, 80, 0.144);
@@ -10,6 +12,7 @@ font-size: 1rem;
 width: 126px;
 height: 42px;
 }
+
 
 .App .landing-div{
 width: 100%;
@@ -36,8 +39,10 @@ color: rgba(0, 0, 0, 2.185);
   }
   
 .Heading{
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: bold;
+  font-family: 'Barlow Condensed', sans-serif;
+  letter-spacing: 2px;
 }
 
 .premium>div{
@@ -62,8 +67,4 @@ color: rgba(0, 0, 0, 2.185);
 .App .social >img{
   width: 25px ;
   height: 25px;
-}
-
-.App a:hover{
-  text-decoration: underline;
 }

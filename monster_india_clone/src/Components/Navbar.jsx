@@ -1,6 +1,14 @@
 import { Grid, Box,Img, Button, Menu, MenuButton, MenuList, MenuItem} from '@chakra-ui/react' 
+import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
+import { AppContext } from '../Context/AppContext'
+import { logout } from '../Context/createActions';
 export default function Navbar() {
+
+    const {state , dispatch} = useContext(AppContext);
+    function handleLogout () {
+        dispatch(logout);
+    }
     return (
         <Grid  
             templateColumns={{base:"1fr", sm:"1fr", md:"1fr", lg:"10% 60% 25%"}} 
@@ -10,7 +18,7 @@ export default function Navbar() {
             alignItems="center" 
             w="100%"
             px={20} 
-            py={5}
+            py={4}
             boxShadow="rgba(149, 157, 165, 0.2) 0px 8px 24px;" 
             pos="sticky" 
             bg="white" 
@@ -20,7 +28,7 @@ export default function Navbar() {
         
             <Box columns={1} spacing={10} m="auto">
             <NavLink to="/">
-                <Img src="https://media.monsterindia.com/trex/public/default/images/monster-logo.svg"  />
+                <Img src="https://media.monsterindia.com/trex/public/default/images/monster-logo.svg" w="70%"  />
             </NavLink>
             </Box>
             
@@ -68,9 +76,17 @@ export default function Navbar() {
             </Grid>
 
             <Grid templateColumns="repeat(2,1fr)" gap={3}>
-                <NavLink to="/login">
-                    <Button size='md' variant='outline' _hover={{bg:"orange", color:"white"}}>JOBSEEKER LOGIN</Button>
-                </NavLink>
+                {
+                    state.isAuth!==true && 
+                    <NavLink to="/login">
+                        <Button size='md' variant='outline' _hover={{bg:"orange", color:"white"}}>JOBSEEKER LOGIN</Button>
+                    </NavLink>
+                }
+                {
+                    state.isAuth &&
+                    <Button size='md' variant='outline' _hover={{bg:"orange", color:"white"}} onClick={handleLogout} isLoading={state.isLoading} loadingText="Logging Out">LOGOUT</Button>
+                }
+
                 <NavLink to="/employer">
                     <Button size='md' variant='outline' _hover={{bg:"orange", color:"white"}}>FOR EMPLOYERS</Button>
                 </NavLink>

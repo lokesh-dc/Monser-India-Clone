@@ -3,7 +3,7 @@ import {ArrowForwardIcon, ArrowRightIcon} from "@chakra-ui/icons"
 export default function PremiumServices () {
     return (
 
-        <Grid w={{base:"95%",sm:"95%", md:"95%", lg:"80%"}} gap={4} p={4}>
+        <Grid w={{base:"95%",sm:"95%", md:"95%", lg:"80%"}} gap={4} p={8}>
             <Flex justifyContent="space-between">
                 <Text  className="Heading">PREMIUM SERVICES</Text>
                 <Button variant="ghost" rightIcon={ <ArrowRightIcon />}>VIEW ALL</Button>
@@ -11,8 +11,6 @@ export default function PremiumServices () {
         <Grid 
             className="premium"
             templateColumns={{base:"1fr", sm:"1fr", md:"repeat(2,1fr)", lg:"repeat(4,1fr)"}} 
-            
-            
             gap={4}
         >
             <Box>
