@@ -1,4 +1,4 @@
-import {Flex, Grid, Img, Text} from "@chakra-ui/react"
+import {Flex, Grid, Img, Select, Text} from "@chakra-ui/react"
 import { NavLink } from "react-router-dom"
 export default function Footer () {
     return (
@@ -12,9 +12,11 @@ export default function Footer () {
             justifyContent="center"
             border="1px solid rgba(187, 187, 187, 0.555)"
         >
-            <select>
-                <option value="India">India</option>
-            </select>
+            <Select>
+                <option value="India">IN</option>
+                <option value="India">US</option>
+                <option value="India">UK</option>
+            </Select>
             <Grid templateColumns={{base:"repeat(2,1fr)", sm : "repeat(2,1fr)" , md:"1fr", lg:"repeat(2,1fr)"}}>
                 <div>
                     <p>Toll no. : +91-40-66116611</p>

@@ -55,7 +55,7 @@ export default function Login () {
     }
 
     if(state.isAuth){
-        return <Navigate to="/" />
+        return <Navigate to="/work-from-home-jobs" />
     }
     if(state.isError){
         return <Navigate to="*" />

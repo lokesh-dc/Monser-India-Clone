@@ -12,11 +12,9 @@ export default function ArticleDiv({article}) {
     }
     function handleAddToStar () {
         if(!state.isAuth){
-            alert("please login")
-            return (<Navigate to="/login" />)
+            return <Navigate to="/login" />
         }
-        
-        
+        alert("Added to Starred ! ")
     }
 
 
@@ -40,8 +38,8 @@ export default function ArticleDiv({article}) {
                 <Flex alignItems="center" justifyContent="space-between"  bg="rgba(129, 129, 129, 0.194)" p={2} >
                     <Text><b>Posted on :</b> {article.Date_Posted}</Text>
                     <Flex alignItems="center" gap={3}>
-                        <Icon w={6} h={6} as={AiOutlineStar} onClick={handleAddToStar} />
-                        <Icon w={6} h={6} as={AiOutlineShareAlt} />
+                        <Icon w={6} h={6} as={AiOutlineStar} cursor="pointer" onClick={handleAddToStar} />
+                        <Icon w={6} h={6} as={AiOutlineShareAlt} cursor="pointer" />
                         <Button variant="outline" colorScheme="purple" _hover={{bg:"primary", color:"white"}}>APPLY</Button>
                     </Flex>
                 </Flex>

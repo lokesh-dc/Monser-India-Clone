@@ -2,13 +2,11 @@ import { Grid, Box,Img, Button, Menu, MenuButton, MenuList, MenuItem} from '@cha
 import { useContext } from 'react'
 import { NavLink } from 'react-router-dom'
 import { AppContext } from '../Context/AppContext'
-import { logout } from '../Context/createActions';
+import LogOut from './LogOutModal';
 export default function Navbar() {
 
     const {state , dispatch} = useContext(AppContext);
-    function handleLogout () {
-        dispatch(logout);
-    }
+
     return (
         <Grid  
             templateColumns={{base:"1fr", sm:"1fr", md:"1fr", lg:"10% 60% 25%"}} 
@@ -84,7 +82,9 @@ export default function Navbar() {
                 }
                 {
                     state.isAuth &&
-                    <Button size='md' variant='outline' _hover={{bg:"orange", color:"white"}} onClick={handleLogout} isLoading={state.isLoading} loadingText="Logging Out">LOGOUT</Button>
+                    (
+                        <LogOut />
+                    )
                 }
 
                 <NavLink to="/employer">
