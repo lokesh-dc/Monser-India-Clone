@@ -11,7 +11,8 @@ export default function ArticleDiv({article}) {
         )
     }
     function handleAddToStar () {
-        if(!state.isAuth){
+        if(state.isAuth===false){
+            alert("Kindly Login First !");
             return <Navigate to="/login" />
         }
         alert("Added to Starred ! ")
