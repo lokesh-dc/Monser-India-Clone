@@ -1,8 +1,13 @@
 # MonsterIndia.com (clone) - <a href="https://joyful-elf-e0863a.netlify.app/"> Deployed Link </a>
 
-### Summary: 
-  Cloned a well known website where any job seeker can find suitable jobs for them
-  
+### SUMMARY : 
+  Cloned a well known website where any job seeker can find suitable jobs.
+### TECH STACK :
+  * HTML5
+  * CSS3
+  * React
+  * API
+  * Chakra UI
   
  ## Landing Page:
 ![landing](https://user-images.githubusercontent.com/103635403/191071799-13e8b455-ef2e-4886-a586-d40cd171292e.png)
