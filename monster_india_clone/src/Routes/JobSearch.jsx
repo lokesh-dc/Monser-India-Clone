@@ -11,7 +11,7 @@ import {
   } from '@chakra-ui/react'
 import { useContext, useState } from 'react'
 import { useEffect } from 'react'
-import {Navigate, NavLink} from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import { AppContext } from '../Context/AppContext'
 import { set_query } from '../Context/createActions'
 
