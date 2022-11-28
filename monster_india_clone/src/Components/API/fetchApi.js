@@ -2,7 +2,7 @@ import axios from "axios"
 
 
  function fetchData (params={}) {
-    return axios.get('https://monsterbackend.herokuapp.com/jobs',{
+    return axios.get('https://famous-worm-slacks.cyclic.app/jobs',{
         params:{
             _page : params.page,
             _limit : params.limit,
@@ -19,7 +19,7 @@ import axios from "axios"
 }
 
  function filter(params={}) {
-    return axios.get('https://monsterbackend.herokuapp.com/jobs',{
+    return axios.get('https://famous-worm-slacks.cyclic.app/jobs',{
         params:{
             "Industry": params.name
         }
@@ -33,7 +33,7 @@ import axios from "axios"
 }
 
 function searchApi(value) {
-    return axios.get('https://monsterbackend.herokuapp.com/jobs',{
+    return axios.get('https://famous-worm-slacks.cyclic.app/jobs',{
         params:{
             q: value
         }
@@ -47,7 +47,7 @@ function searchApi(value) {
 }
 
 export function fetchJobArticle(id) {
-    return axios.get(`https://monsterbackend.herokuapp.com/jobs/${id}`)
+    return axios.get(`https://famous-worm-slacks.cyclic.app/jobs/${id}`)
     .then((res)=>{
         return res.data;
     })
@@ -57,7 +57,7 @@ export function fetchJobArticle(id) {
 }
 
 function searchFilteredArticles (params={}) {
-    return axios.get(`https://monsterbackend.herokuapp.com/jobs`,{
+    return axios.get(`https://famous-worm-slacks.cyclic.app/jobs`,{
         params:{
             q : params.q,
             Industry : params.Industry,
